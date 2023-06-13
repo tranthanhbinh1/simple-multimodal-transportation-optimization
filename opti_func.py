@@ -21,7 +21,7 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
     problem.linear_constraints.add(
         lin_expr=[cplex.SparsePair(ind=supply_constraints[v][0], val=supply_constraints[v][1]) for v in supply_constraints.keys()],
         senses=["E", "E"],
-        rhs=[float(num) for num in supply_rhs],
+        rhs=[int(num) for num in supply_rhs],
         names=[f"Supply_{key}" for key in supply_constraints.keys()]
     )
 
@@ -31,7 +31,7 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
 
     val=demand_constraints[v][1]) for v in demand_constraints.keys()],
         senses=["E"] * len(demand_constraints),
-        rhs=[float(num) for num in demand_rhs],
+        rhs=[int(num) for num in demand_rhs],
         names=list(demand_constraints.keys())
     )
 
@@ -39,7 +39,7 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
     problem.linear_constraints.add(
         lin_expr=[cplex.SparsePair(ind=capacity_constraints[v][0], val=capacity_constraints[v][1]) for v in capacity_constraints.keys()],
         senses=["L"] * len(capacity_constraints),
-        rhs=[float(num) for num in capacity_rhs],
+        rhs=[int(num) for num in capacity_rhs],
         names=list(capacity_constraints.keys())
     )
 
