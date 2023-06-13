@@ -63,4 +63,6 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
 
 
 if __name__ == '__main__':
-   solve_optimization(variables1, costs1, supply_constraints1, demand_constraints1, capacity_constraints1, supply_rhs_list, demand_rhs_list, capacity_rhs_list)
+   solve_optimization(variables1, costs1, 
+                      supply_constraints1, demand_constraints1, capacity_constraints1, 
+                      supply_rhs_list, demand_rhs_list, capacity_rhs_list)
