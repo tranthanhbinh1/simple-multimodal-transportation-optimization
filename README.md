@@ -8,3 +8,7 @@
 or
 
 ```pip install cplex```
+
+2. Run the main optimization program.
+
+```python -m opti_func.py```
