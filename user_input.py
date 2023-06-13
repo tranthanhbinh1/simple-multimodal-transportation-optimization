@@ -1,21 +1,35 @@
 # (S) to 4 end_points (D1, D2, D3, and D4) through 2 distribution mid_points (N1 and N2).
 # User input
 import itertools
-suppliers = {'S'}
-good_types = {'A', 'B'}
-end_points = {'D1', 'D2', 'D3', 'D4'}
-middle_points = {'N1', 'N2'}
+
+# Prompt the user for input
+suppliers_input = input("Enter suppliers (comma-separated): ")
+goods_types_input = input("Enter goods types (comma-separated): ")
+middle_points_input = input("Enter middle points (comma-separated): ")
+end_points_input = input("Enter end points (comma-separated): ")
+
+# Create dictionaries from user input
+suppliers = set(suppliers_input.split(','))
+goods_types = set(goods_types_input.split(','))
+middle_points = set(middle_points_input.split(','))
+end_points = set(end_points_input.split(','))
+
+# Print the dictionaries
+print("Suppliers:", suppliers)
+print("Goods types:", goods_types)
+print("End points:", end_points)
+print("Middle points:", middle_points)
 
 variables1 = []
-for type in good_types:
+for type in goods_types:
     for sup in suppliers:
         for mid_point in middle_points:
             variables1.append(f'{type}_{sup}_{mid_point}')
             for end_point in end_points:
                 variables1.append(f'{type}_{mid_point}_{end_point}')
 
-supp_to_dis = list('_'.join(chars) for chars in itertools.product(good_types, suppliers, middle_points))
-dis_to_hos = list('_'.join(chars) for chars in itertools.product(good_types, middle_points, end_points))
+supp_to_dis = list('_'.join(chars) for chars in itertools.product(goods_types, suppliers, middle_points))
+dis_to_hos = list('_'.join(chars) for chars in itertools.product(goods_types, middle_points, end_points))
 # Add to Variables
 all_paths = set(supp_to_dis + dis_to_hos)
 
