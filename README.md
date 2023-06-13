@@ -1,10 +1,10 @@
 # simple-multimodal-transportation-optimization
 
-**TO RUN**
-First install Cplex.
+**TO RUN.**
 
-```
-pip install -r requirements.txt
+1. First install Cplex.
+
+```pip install -r requirements.txt```
 or
-pip install cplex
-```
+
+```pip install cplex```
