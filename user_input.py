@@ -17,8 +17,8 @@ end_points = set(end_points_input.split(','))
 # Print the dictionaries
 print("Suppliers:", suppliers)
 print("Goods types:", goods_types)
-print("End points:", end_points)
 print("Middle points:", middle_points)
+print("End points:", end_points)
 
 variables1 = []
 for type in goods_types:
@@ -46,7 +46,7 @@ print(costs1)
 
 # Supply constraints
 supply_constraints1 = {}
-for vacc_type in good_types:
+for vacc_type in goods_types:
     supply_key = vacc_type
     supply_value = [[f'{vacc_type}_S_{mid_point}' for mid_point in middle_points], [1, 1]]
     supply_constraints1[supply_key] = supply_value
@@ -64,7 +64,7 @@ print(f"Supply RHS are {supply_rhs_list}")
 # Demand constraints
 demand_constraints1 = {}
 for point in end_points:
-    for vacc_type in good_types:
+    for vacc_type in goods_types:
         demand_key = f'{point}_{vacc_type}'
         demand_value = [[f'{vacc_type}_{mid_point}_{point}' for mid_point in middle_points], [1, 1]]
         demand_constraints1[demand_key] = demand_value
@@ -87,14 +87,14 @@ capacity_constraints1 = {}
 for sup in suppliers:
     for dis in middle_points:
         constraint_key = f"{sup}_{dis}"
-        constraint_value = [[f"{vacc}_{sup}_{dis}" for vacc in good_types], [1, 1]]
+        constraint_value = [[f"{vacc}_{sup}_{dis}" for vacc in goods_types], [1, 1]]
         capacity_constraints1[constraint_key] = constraint_value
 for sup in suppliers:
     for dis in middle_points:
         # Create capacity constraints for each distribution mid_point
         for hosp in end_points:
             constraint_key = f"{dis}_{hosp}"
-            constraint_value = [[f"{vacc}_{dis}_{hosp}" for vacc in good_types], [1, 1]]
+            constraint_value = [[f"{vacc}_{dis}_{hosp}" for vacc in goods_types], [1, 1]]
             capacity_constraints1[constraint_key] = constraint_value
 print(capacity_constraints1)
 
@@ -112,7 +112,7 @@ print(f"Capacity RHS are {capacity_rhs_list}")
 if __name__ == '__main__':
     print("User Input")
     print(f"suppliers: {suppliers}")
-    print(f"type Types: {good_types}")
+    print(f"type Types: {goods_types}")
     print(f"end_points: {end_points}")
     print(f"Distribution mid_points: {middle_points}")
     print(f"Variables: {variables1}")

@@ -19,7 +19,7 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
 
     # Add the supply constraints
     problem.linear_constraints.add(
-        lin_expr=[cplex.SparsePair(ind=supply_constraints[v][0], val=supply_constraints[v][1]) for v in ['A', 'B']],
+        lin_expr=[cplex.SparsePair(ind=supply_constraints[v][0], val=supply_constraints[v][1]) for v in supply_constraints.keys()],
         senses=["E", "E"],
         rhs=[float(num) for num in supply_rhs],
         names=[f"Supply_{key}" for key in supply_constraints.keys()]
