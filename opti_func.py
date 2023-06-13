@@ -12,7 +12,7 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
 
     # Define the variables and their types
 
-    problem.variables.add(names=variables, types=[problem.variables.type.continuous] * len(variables))
+    problem.variables.add(names=variables, types=[problem.variables.type.integer] * len(variables))
 
     # Set the objective function
     problem.objective.set_linear(list(costs.items()))
