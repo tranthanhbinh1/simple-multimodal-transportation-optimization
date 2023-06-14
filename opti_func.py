@@ -11,7 +11,6 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
     problem.objective.set_sense(problem.objective.sense.minimize)
 
     # Define the variables and their types
-
     problem.variables.add(names=variables, types=[problem.variables.type.integer] * len(variables))
 
     # Set the objective function
@@ -28,8 +27,7 @@ def solve_optimization(variables, costs, supply_constraints, demand_constraints,
     # Add the demand constraints
     problem.linear_constraints.add(
         lin_expr=[cplex.SparsePair(ind=demand_constraints[v][0],
-
-    val=demand_constraints[v][1]) for v in demand_constraints.keys()],
+        val=demand_constraints[v][1]) for v in demand_constraints.keys()],
         senses=["E"] * len(demand_constraints),
         rhs=[int(num) for num in demand_rhs],
         names=list(demand_constraints.keys())
