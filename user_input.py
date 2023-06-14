@@ -27,12 +27,11 @@ for type in goods_types:
             variables1.append(f'{type}_{sup}_{mid_point}')
             for end_point in end_points:
                 variables1.append(f'{type}_{mid_point}_{end_point}')
+print(f"Variables are {variables1}")
 
-supp_to_dis = list('_'.join(chars) for chars in itertools.product(goods_types, suppliers, middle_points))
-dis_to_hos = list('_'.join(chars) for chars in itertools.product(goods_types, middle_points, end_points))
 # Add to Variables
-all_paths = set(supp_to_dis + dis_to_hos)
-
+all_paths = set(variables1)
+print(f"Paths are {all_paths}")
 print(f"The total number of Paths that needs to be considered: {len(all_paths)}")
 
 cost_of_each_path = []
