@@ -11,4 +11,4 @@ or
 
 2. Run the main optimization program.
 
-```python -m opti_func.py```
+```python -m opti_func```
